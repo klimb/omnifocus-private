@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="1460" cy="600" r="1300" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1A3A80"/>
+      <stop offset="0.35" stop-color="#0B1430"/>
+      <stop offset="1" stop-color="#03050C"/>
+    </radialGradient>
+    <linearGradient id="neon" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5AC8FA"/>
+      <stop offset="0.55" stop-color="#7D5BFF"/>
+      <stop offset="1" stop-color="#FF5ECF"/>
+    </linearGradient>
+    <linearGradient id="neonText" x1="140" y1="0" x2="1020" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5AC8FA"/>
+      <stop offset="0.55" stop-color="#7D5BFF"/>
+      <stop offset="1" stop-color="#FF5ECF"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B2E5C" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#0A1330" stop-opacity="0.95"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0 H0 V60" fill="none" stroke="#FFFFFF" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="gridFade" cx="1460" cy="600" r="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="1"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <mask id="fade">
+      <rect width="1920" height="1080" fill="url(#gridFade)"/>
+    </mask>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="haze" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="90"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#grid)" mask="url(#fade)"/>
+  <circle cx="1460" cy="640" r="300" fill="#3A6BFF" opacity="0.35" filter="url(#haze)"/>
+  <circle cx="1620" cy="760" r="200" fill="#B04BFF" opacity="0.25" filter="url(#haze)"/>
+
+  <!-- Stars -->
+  <g fill="#FFFFFF">
+    <circle cx="90" cy="80" r="1.6" opacity="0.6"/><circle cx="310" cy="150" r="1.2" opacity="0.4"/>
+    <circle cx="520" cy="60" r="1.8" opacity="0.7"/><circle cx="760" cy="190" r="1.1" opacity="0.4"/>
+    <circle cx="980" cy="110" r="1.5" opacity="0.6"/><circle cx="1180" cy="60" r="1.2" opacity="0.5"/>
+    <circle cx="1390" cy="140" r="1.9" opacity="0.7"/><circle cx="1610" cy="90" r="1.3" opacity="0.5"/>
+    <circle cx="1820" cy="170" r="1.7" opacity="0.6"/><circle cx="1880" cy="420" r="1.2" opacity="0.4"/>
+    <circle cx="60" cy="980" r="1.4" opacity="0.5"/><circle cx="420" cy="1010" r="1.1" opacity="0.4"/>
+    <circle cx="860" cy="960" r="1.6" opacity="0.5"/><circle cx="1020" cy="1040" r="1.2" opacity="0.4"/>
+    <circle cx="1880" cy="980" r="1.5" opacity="0.5"/><circle cx="1260" cy="1000" r="1.3" opacity="0.4"/>
+    <circle cx="200" cy="300" r="1" opacity="0.3"/><circle cx="1080" cy="300" r="1.4" opacity="0.5"/>
+    <circle cx="1750" cy="280" r="1.1" opacity="0.4"/><circle cx="640" cy="880" r="1.2" opacity="0.35"/>
+  </g>
+
+  <!-- Orbits -->
+  <circle cx="1460" cy="640" r="420" fill="none" stroke="#7D5BFF" stroke-opacity="0.22" stroke-width="2"/>
+
+  <!-- Mind map branches -->
+  <g fill="none" stroke="url(#neon)" stroke-width="4" stroke-linecap="round" stroke-opacity="0.8" filter="url(#glow)">
+    <path d="M1260 500 C1220 420 1240 330 1130 330"/>
+    <path d="M1240 640 C1180 640 1160 610 1100 610"/>
+    <path d="M1260 800 C1200 840 1180 900 1120 900"/>
+    <path d="M1600 420 C1680 400 1720 330 1800 330"/>
+    <path d="M1680 620 C1740 620 1770 600 1830 600"/>
+    <path d="M1660 800 C1720 850 1740 900 1800 900"/>
+  </g>
+  <g fill="none" stroke="#9FB4FF" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.55">
+    <path d="M1130 330 Q1070 310 1040 250"/>
+    <path d="M1130 330 Q1170 250 1210 215"/>
+    <path d="M1100 610 Q1060 560 1045 520"/>
+    <path d="M1120 900 Q1060 900 1030 860"/>
+    <path d="M1120 900 Q1070 960 1040 1000"/>
+    <path d="M1800 330 Q1850 300 1870 250"/>
+    <path d="M1800 330 Q1750 260 1720 230"/>
+    <path d="M1830 600 Q1780 560 1750 505"/>
+    <path d="M1830 600 Q1870 560 1875 500"/>
+    <path d="M1800 900 Q1860 880 1880 840"/>
+    <path d="M1800 900 Q1750 960 1720 1000"/>
+  </g>
+  <g fill="#9FB4FF" opacity="0.8">
+    <circle cx="1040" cy="250" r="6"/><circle cx="1210" cy="215" r="6"/>
+    <circle cx="1045" cy="520" r="6"/>
+    <circle cx="1030" cy="860" r="6"/><circle cx="1040" cy="1000" r="6"/>
+    <circle cx="1870" cy="250" r="6"/><circle cx="1720" cy="230" r="6"/>
+    <circle cx="1750" cy="505" r="6"/><circle cx="1875" cy="500" r="6"/>
+    <circle cx="1880" cy="840" r="6"/><circle cx="1720" cy="1000" r="6"/>
+  </g>
+
+  <!-- Padlock vault -->
+  <path d="M1320 470 V390 a140 140 0 0 1 280 0 V470" fill="none" stroke="url(#neon)" stroke-width="40" stroke-linecap="round" filter="url(#glow)"/>
+  <rect x="1240" y="455" width="440" height="390" rx="52" fill="url(#glass)" stroke="url(#neon)" stroke-width="4" filter="url(#glow)"/>
+  <rect x="1240" y="455" width="440" height="390" rx="52" fill="url(#glass)"/>
+  <rect x="1242" y="457" width="436" height="386" rx="50" fill="none" stroke="url(#neon)" stroke-width="3"/>
+  <path d="M1290 470 H1630" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Checklist inside the vault -->
+  <rect x="1300" y="530" width="54" height="54" rx="14" fill="none" stroke="#5AC8FA" stroke-width="4"/>
+  <path d="M1312 558 l12 12 l20 -26" fill="none" stroke="#5AC8FA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <rect x="1380" y="549" width="230" height="16" rx="8" fill="#FFFFFF" opacity="0.75"/>
+
+  <rect x="1300" y="630" width="54" height="54" rx="14" fill="none" stroke="#7D5BFF" stroke-width="4"/>
+  <path d="M1312 658 l12 12 l20 -26" fill="none" stroke="#9B7DFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <rect x="1380" y="649" width="180" height="16" rx="8" fill="#FFFFFF" opacity="0.75"/>
+
+  <rect x="1300" y="730" width="54" height="54" rx="14" fill="none" stroke="#FF5ECF" stroke-width="4"/>
+  <rect x="1380" y="749" width="250" height="16" rx="8" fill="#FFFFFF" opacity="0.4"/>
+
+  <!-- Mind map nodes -->
+  <g fill="#0E1838" stroke="url(#neon)" stroke-width="3">
+    <circle cx="1130" cy="330" r="52"/>
+    <circle cx="1100" cy="610" r="52"/>
+    <circle cx="1120" cy="900" r="52"/>
+    <circle cx="1800" cy="330" r="52"/>
+    <circle cx="1830" cy="600" r="52"/>
+    <circle cx="1800" cy="900" r="52"/>
+  </g>
+
+  <!-- OmniFocus -->
+  <g transform="translate(1130 330)">
+    <rect x="-28" y="-28" width="56" height="56" rx="14" fill="#7E4DD8"/>
+    <circle r="16" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    <path d="M-7 0 l5 5 l10 -11" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- OpenBSD (Puffy) -->
+  <g transform="translate(1100 610)">
+    <g stroke="#F2C230" stroke-width="3.5" stroke-linecap="round">
+      <line x1="24" y1="0" x2="32" y2="0"/>
+      <line x1="21.3" y1="10" x2="28.2" y2="14"/>
+      <line x1="14" y1="17.3" x2="18" y2="24.2"/>
+      <line x1="4" y1="20" x2="4" y2="28"/>
+      <line x1="-6" y1="17.3" x2="-10" y2="24.2"/>
+      <line x1="-6" y1="-17.3" x2="-10" y2="-24.2"/>
+      <line x1="4" y1="-20" x2="4" y2="-28"/>
+      <line x1="14" y1="-17.3" x2="18" y2="-24.2"/>
+      <line x1="21.3" y1="-10" x2="28.2" y2="-14"/>
+    </g>
+    <path d="M-14 0 L-28 -11 L-28 11 Z" fill="#F2C230"/>
+    <circle cx="4" cy="0" r="20" fill="#F2C230"/>
+    <circle cx="12" cy="-5" r="5" fill="#FFFFFF"/>
+    <circle cx="13" cy="-5" r="2.5" fill="#111111"/>
+  </g>
+
+  <!-- Ubuntu -->
+  <g transform="translate(1120 900)">
+    <circle r="30" fill="#E95420"/>
+    <circle r="14" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+    <g fill="#FFFFFF" stroke="#E95420" stroke-width="3">
+      <circle cx="21" cy="0" r="6.5"/>
+      <circle cx="-10.5" cy="18.2" r="6.5"/>
+      <circle cx="-10.5" cy="-18.2" r="6.5"/>
+    </g>
+  </g>
+
+  <!-- Tailscale -->
+  <g transform="translate(1800 330)" fill="#FFFFFF">
+    <circle cx="-16" cy="-16" r="6" opacity="0.3"/><circle cx="0" cy="-16" r="6" opacity="0.3"/><circle cx="16" cy="-16" r="6" opacity="0.3"/>
+    <circle cx="-16" cy="0" r="6"/><circle cx="0" cy="0" r="6"/><circle cx="16" cy="0" r="6"/>
+    <circle cx="-16" cy="16" r="6" opacity="0.3"/><circle cx="0" cy="16" r="6"/><circle cx="16" cy="16" r="6" opacity="0.3"/>
+  </g>
+
+  <!-- WireGuard -->
+  <g transform="translate(1830 600)">
+    <circle r="30" fill="#88171A"/>
+    <path d="M-12 -15 C8 -22 16 -2 0 -1 C-16 0 -10 20 12 14" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="-8" cy="-10" r="2.5" fill="#88171A"/>
+  </g>
+
+  <!-- VPN -->
+  <g transform="translate(1800 900)">
+    <path d="M0 -30 L24 -20 V2 C24 18 12 28 0 32 C-12 28 -24 18 -24 2 V-20 Z" fill="#2F7BFF"/>
+    <path d="M-6 0 V-6 a6 6 0 0 1 12 0 V0" fill="none" stroke="#FFFFFF" stroke-width="3.5"/>
+    <rect x="-10" y="-1" width="20" height="16" rx="3" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Node labels -->
+  <g font-size="21" font-weight="600" fill="#DDE3F0" text-anchor="middle">
+    <text x="1130" y="412">OmniFocus</text>
+    <text x="1100" y="692">OpenBSD</text>
+    <text x="1120" y="982">Ubuntu</text>
+    <text x="1800" y="412">Tailscale</text>
+    <text x="1830" y="682">WireGuard</text>
+    <text x="1800" y="982">VPN</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="140" y="380" font-size="26" font-weight="700" letter-spacing="7" fill="#5AC8FA">PRIVATE BY DESIGN</text>
+  <text x="136" y="510" font-size="108" font-weight="800" fill="#FFFFFF" letter-spacing="-2">Plan your life.</text>
+  <text x="136" y="635" font-size="108" font-weight="800" fill="url(#neonText)" letter-spacing="-2">Keep it private.</text>
+  <text x="140" y="715" font-size="34" fill="#B8C0D6">Self-hosted OmniFocus sync behind Tailscale</text>
+
+  <!-- Tech chips -->
+  <g font-size="23" font-weight="600" fill="#DDE3F0" text-anchor="middle">
+    <rect x="140" y="770" width="160" height="48" rx="24" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.18"/>
+    <text x="220" y="802">OmniFocus</text>
+    <rect x="316" y="770" width="132" height="48" rx="24" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.18"/>
+    <text x="382" y="802">WebDAV</text>
+    <rect x="464" y="770" width="160" height="48" rx="24" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.18"/>
+    <text x="544" y="802">WireGuard</text>
+    <rect x="640" y="770" width="150" height="48" rx="24" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.18"/>
+    <text x="715" y="802">Tailscale</text>
+  </g>
+
+  <!-- Byline -->
+  <text x="140" y="910" font-size="30" fill="#8C95AD">by</text>
+  <text x="181" y="910" font-size="30" font-weight="600" fill="#FFFFFF">Dmitry Kalashnikov</text>
+</svg>

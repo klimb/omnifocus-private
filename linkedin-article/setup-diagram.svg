@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="14"/>
+      <feOffset dy="8"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.10"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrowR" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#0071E3"/>
+    </marker>
+    <marker id="arrowL" viewBox="0 0 10 10" refX="4" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M10 0 L0 5 L10 10 Z" fill="#0071E3"/>
+    </marker>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#F5F5F7"/>
+
+  <!-- Title -->
+  <text x="960" y="140" text-anchor="middle" font-size="66" font-weight="700" fill="#1D1D1F">Your plans. Your server. Your rules.</text>
+  <text x="960" y="205" text-anchor="middle" font-size="32" fill="#6E6E73">Private OmniFocus sync over Tailscale</text>
+
+  <!-- Left card: devices -->
+  <rect x="120" y="290" width="480" height="560" rx="28" fill="#FFFFFF" filter="url(#shadow)"/>
+  <text x="360" y="360" text-anchor="middle" font-size="36" font-weight="700" fill="#1D1D1F">Your devices</text>
+
+  <rect x="178" y="410" width="44" height="80" rx="10" fill="none" stroke="#1D1D1F" stroke-width="4"/>
+  <rect x="192" y="417" width="16" height="5" rx="2.5" fill="#1D1D1F"/>
+  <text x="270" y="445" font-size="34" font-weight="600" fill="#1D1D1F">iPhone</text>
+  <text x="270" y="480" font-size="24" fill="#6E6E73">OmniFocus + Tailscale</text>
+
+  <rect x="168" y="545" width="64" height="86" rx="9" fill="none" stroke="#1D1D1F" stroke-width="4"/>
+  <text x="270" y="580" font-size="34" font-weight="600" fill="#1D1D1F">iPad</text>
+  <text x="270" y="615" font-size="24" fill="#6E6E73">OmniFocus + Tailscale</text>
+
+  <rect x="161" y="690" width="78" height="52" rx="6" fill="none" stroke="#1D1D1F" stroke-width="4"/>
+  <path d="M150 750 H250 L242 762 H158 Z" fill="#1D1D1F"/>
+  <text x="270" y="722" font-size="34" font-weight="600" fill="#1D1D1F">Mac</text>
+  <text x="270" y="757" font-size="24" fill="#6E6E73">OmniFocus + Tailscale</text>
+
+  <!-- Tunnel -->
+  <text x="960" y="490" text-anchor="middle" font-size="34" font-weight="700" fill="#0071E3">Tailscale private network</text>
+  <rect x="630" y="530" width="660" height="80" rx="40" fill="#E8F2FF" stroke="#0071E3" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="680" y1="570" x2="900" y2="570" stroke="#0071E3" stroke-width="6" stroke-linecap="round" marker-start="url(#arrowL)"/>
+  <line x1="1020" y1="570" x2="1240" y2="570" stroke="#0071E3" stroke-width="6" stroke-linecap="round" marker-end="url(#arrowR)"/>
+  <circle cx="960" cy="570" r="48" fill="#FFFFFF" stroke="#0071E3" stroke-width="4"/>
+  <path d="M948 568 V555 a12 12 0 0 1 24 0 V568" fill="none" stroke="#0071E3" stroke-width="5"/>
+  <rect x="940" y="566" width="40" height="30" rx="6" fill="#0071E3"/>
+  <text x="960" y="660" text-anchor="middle" font-size="26" fill="#6E6E73">WireGuard-encrypted · no open ports</text>
+
+  <!-- Crossed-out cloud -->
+  <g fill="#D2D2D7">
+    <circle cx="932" cy="790" r="28"/>
+    <circle cx="968" cy="774" r="36"/>
+    <circle cx="1002" cy="794" r="26"/>
+    <rect x="904" y="790" width="124" height="30" rx="15"/>
+  </g>
+  <line x1="902" y1="832" x2="1030" y2="740" stroke="#FF3B30" stroke-width="7" stroke-linecap="round"/>
+  <text x="960" y="880" text-anchor="middle" font-size="26" fill="#6E6E73">No third-party cloud</text>
+
+  <!-- Right card: home server -->
+  <rect x="1320" y="290" width="480" height="560" rx="28" fill="#FFFFFF" filter="url(#shadow)"/>
+  <text x="1560" y="360" text-anchor="middle" font-size="36" font-weight="700" fill="#1D1D1F">Old PC in your closet</text>
+  <text x="1560" y="398" text-anchor="middle" font-size="24" fill="#6E6E73">Ubuntu Server</text>
+
+  <rect x="1360" y="430" width="400" height="110" rx="18" fill="#F5F5F7"/>
+  <text x="1390" y="478" font-size="28" font-weight="600" fill="#1D1D1F">tailscale serve</text>
+  <text x="1390" y="514" font-size="22" fill="#6E6E73">HTTPS · auto-renewed certificate</text>
+  <line x1="1560" y1="544" x2="1560" y2="566" stroke="#C7C7CC" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="1360" y="570" width="400" height="110" rx="18" fill="#F5F5F7"/>
+  <text x="1390" y="618" font-size="28" font-weight="600" fill="#1D1D1F">Apache WebDAV</text>
+  <text x="1390" y="654" font-size="22" fill="#6E6E73">127.0.0.1 only · password login</text>
+  <line x1="1560" y1="684" x2="1560" y2="706" stroke="#C7C7CC" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="1360" y="710" width="400" height="110" rx="18" fill="#F5F5F7"/>
+  <text x="1390" y="758" font-size="28" font-weight="600" fill="#1D1D1F">/srv/webdav</text>
+  <text x="1390" y="794" font-size="22" fill="#6E6E73">Encrypted OmniFocus database</text>
+
+  <!-- Footer -->
+  <text x="960" y="1000" text-anchor="middle" font-size="24" fill="#86868B">OmniFocus  ·  Ubuntu  ·  Apache WebDAV  ·  Tailscale</text>
+</svg>
