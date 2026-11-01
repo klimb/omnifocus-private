@@ -8,6 +8,8 @@ It knows the doctor you need to call, the money you owe, the job you're quietly 
 
 So here's a question worth asking: **where does that list live, and who else can see it?**
 
+*Code for everything in this article: [github.com/klimb/omnifocus-private](https://github.com/klimb/omnifocus-private)*
+
 ## Twenty years of trying every system
 
 I love being organized. Over the last two decades I've tried nearly every planning method and tool out there:
@@ -15,7 +17,7 @@ I love being organized. Over the last two decades I've tried nearly every planni
 - **Methodologies:** David Allen's *Getting Things Done* (GTD), mind mapping, time blocking, and more paper-and-pencil systems than I can count.
 - **Software:** mind-mapping tools like XMind, polished task managers like Things, and plenty of others.
 
-They all taught me something. But one tool stuck: **OmniFocus**.
+They all taught me something. But one tool stuck: **OmniFocus** (made in Seattle, WA).
 
 ## Why OmniFocus
 
@@ -23,11 +25,15 @@ Life isn't a flat list. "Renovate the kitchen" contains "pick a contractor," whi
 
 OmniFocus lets you nest folders, projects, and action groups as deep as you need. That means I can break any goal, however big or vague, down into the next physical action I can take today. Combine that with tags, defer dates, and custom perspectives, and you get a system that fits how your brain actually works instead of forcing your brain to fit the app.
 
+OmniFocus also takes really good notes: audio, video, and photo attachments per to-do item. Things is text only.
+
+![OmniFocus for macOS](omnifocus-macos.png)
+
 ## Why privacy matters to me
 
 I've run OpenBSD, the most secure operating system, for about twenty years. I care about privacy and security, especially in the age of AI.
 
-Most task apps sync through their vendor's cloud. That's convenient, but it means your most personal data sits on someone else's servers, under their retention policy, their outage schedule, and their terms of service.
+Most task apps sync through their vendor's cloud. That's convenient, but it means your most personal data sits on someone else's servers, under their retention policy, their outage schedule, and their terms of service. You never know who could be looking at your Things to-do list. It's outside of your control.
 
 OmniFocus has a feature most people never notice: **it can sync to your own server** using WebDAV, an open standard. No vendor account required.
 
@@ -51,7 +57,7 @@ Here's what you need:
 | Ubuntu Server or OpenBSD | The operating system | Free |
 | Apache with WebDAV | The sync server OmniFocus talks to | Free |
 | Tailscale | Private network between your devices, built on WireGuard | Free personal plan |
-| OmniFocus | Your planning app | Paid app |
+| OmniFocus | Your planning app | Paid app for iPhone and macOS |
 
 ### Why Tailscale?
 
@@ -67,7 +73,7 @@ I packaged the whole server setup into short, readable shell scripts, one set pe
 
 > **A rule I live by:** never run a shell script from the internet that you haven't read. These scripts are short on purpose. Read them first.
 
-### Pick your path
+### Pick your OS: Ubuntu or OpenBSD
 
 | | Path A: Ubuntu Server | Path B: OpenBSD |
 |---|---|---|
@@ -189,10 +195,10 @@ Coming from Things 3? The repo includes [`things-to-omnifocus.js`](https://githu
 
 ```bash
 osascript -l JavaScript things-to-omnifocus.js           # dry run: shows what it would import
-osascript -l JavaScript things-to-omnifocus.js --apply   # actually import
+osascript -l JavaScript things-to-omnifocus.js --apply   # actually do it
 ```
 
-Always do the dry run first.
+(Always do the dry run first.)
 
 ## Want maximum control?
 
