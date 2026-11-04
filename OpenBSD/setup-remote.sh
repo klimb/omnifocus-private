@@ -2,7 +2,7 @@
 # Configure this OpenBSD host as an OmniFocus WebDAV sync server, published on the tailnet via `tailscale serve`.
 # Usage (as root on the target host): setup-remote.sh [omnifocus-username]
 # Author: Dmitry Kalashnikov
-# Note: points the apache2 rc.d service at its own config file; don't use on a host already running apache2.
+# Note: repoints the apache2 rc.d service at its own config; don't use on a host already running apache2.
 set -euo pipefail
 
 DATA_DIR=/var/webdav
@@ -11,6 +11,7 @@ LOG_DIR=/var/log/apache2
 HTPASSWD=/etc/apache2/webdav.htpasswd
 CONF=/etc/apache2/omnifocus.conf
 MODS=/usr/local/lib/apache2
+HTTPD=/usr/local/sbin/httpd2
 PORT=8080
 
 log() { print -r -- "==> $*"; }
@@ -18,7 +19,7 @@ warn() { print -ru2 -- "warning: $*"; }
 die() { print -ru2 -- "error: $*"; exit 1; }
 
 [[ $(uname -s) == OpenBSD ]] || die "this script is for OpenBSD"
-[[ $(id -u) -eq 0 ]] || die "must be run as root"
+(( $(id -u) == 0 )) || die "must be run as root"
 command -v tailscale >/dev/null ||
     die "tailscale is not installed. Run: pkg_add tailscale && rcctl enable tailscaled && rcctl start tailscaled && tailscale up"
 
@@ -33,7 +34,7 @@ ts_ip=$(print -r -- "$ts_json" | jq -r '.Self.TailscaleIPs[0] // ""')
 cert_domains=$(print -r -- "$ts_json" | jq -r '.CertDomains // [] | length')
 
 [[ -n $dns_name ]] || die "MagicDNS is disabled. Enable it at https://login.tailscale.com/admin/dns"
-[[ $cert_domains -gt 0 ]] || die "HTTPS certificates are disabled. Enable them at https://login.tailscale.com/admin/dns"
+(( cert_domains > 0 )) || die "HTTPS certificates are disabled. Enable them at https://login.tailscale.com/admin/dns"
 url="https://$dns_name/omnifocus/"
 
 # Credentials
@@ -47,12 +48,14 @@ case $of_user in
 '' | *[!A-Za-z0-9._-]*) die "username may only contain letters, digits, '.', '_' and '-'" ;;
 esac
 
-trap 'stty echo 2>/dev/null' EXIT INT TERM
+# ksh keeps running after a trapped signal, so exit explicitly and let the EXIT trap restore echo
+trap 'stty echo 2>/dev/null' EXIT
+trap 'exit 130' INT TERM
 stty -echo
 IFS= read -r of_pass?"OmniFocus sync password for '$of_user': "; echo
+[[ -n $of_pass ]] || die "password must not be empty"
 IFS= read -r of_pass2?"Confirm password: "; echo
 stty echo
-[[ -n $of_pass ]] || die "password must not be empty"
 [[ $of_pass == "$of_pass2" ]] || die "passwords do not match"
 unset of_pass2
 
@@ -119,7 +122,7 @@ DocumentRoot "$DATA_DIR"
 </Directory>
 EOF
 
-/usr/local/sbin/httpd2 -t -f "$CONF" 2>/dev/null || { /usr/local/sbin/httpd2 -t -f "$CONF"; die "Apache config test failed"; }
+"$HTTPD" -t -f "$CONF" 2>/dev/null || { "$HTTPD" -t -f "$CONF"; die "Apache config test failed"; }
 rcctl enable apache2
 rcctl set apache2 flags -f "$CONF"
 rcctl restart apache2 >/dev/null
