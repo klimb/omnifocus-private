@@ -20,6 +20,10 @@ Full guide: [linkedin-article/README.md](linkedin-article/README.md)
 
 **Settings > Sync > WebDAV Server**, then enter `https://<host>.<tailnet>.ts.net/omnifocus/` and your credentials.
 
+## Backup
+
+SSH into the server and run `omnifocus-backup`. Snapshots go to `/var/backups/omnifocus/`.
+
 ## Author
 
 Dmitry Kalashnikov

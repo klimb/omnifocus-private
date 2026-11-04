@@ -8,6 +8,7 @@ DATA_DIR=/srv/webdav
 HTPASSWD=/etc/apache2/webdav.htpasswd
 SITE=/etc/apache2/sites-available/omnifocus.conf
 PORTS_CONF=/etc/apache2/ports.conf
+BACKUP_CMD=/usr/local/bin/omnifocus-backup
 PORT=8080
 
 log() { printf '\033[1;34m==>\033[0m %s\n' "$*"; }
@@ -69,6 +70,21 @@ chown root:www-data "$HTPASSWD"
 chmod 640 "$HTPASSWD"
 printf '%s\n' "$of_pass" | htpasswd -i -B "$HTPASSWD" "$of_user" 2>/dev/null
 
+# Backup command
+log "Installing $BACKUP_CMD"
+cat >"$BACKUP_CMD" <<EOF
+#!/bin/sh
+# Snapshot the OmniFocus sync data to /var/backups/omnifocus.
+set -eu
+[ "\$(id -u)" -eq 0 ] || exec sudo "\$0"
+umask 077
+mkdir -p /var/backups/omnifocus
+file=/var/backups/omnifocus/omnifocus-\$(date +%Y%m%d-%H%M%S).tar.gz
+tar -C $DATA_DIR -czf "\$file" omnifocus
+echo "\$file"
+EOF
+chmod 755 "$BACKUP_CMD"
+
 # Site
 log "Writing $SITE"
 cat >"$SITE" <<EOF
@@ -126,4 +142,6 @@ Done. In OmniFocus on each device:
   Server:   $url
   Username: $of_user
 On the first device choose to replace the server database.
+
+To back up, run omnifocus-backup on this host.
 EOF

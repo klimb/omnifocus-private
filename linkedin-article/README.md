@@ -185,9 +185,15 @@ Every device needs Tailscale installed and connected. On iPhone and iPad, turn o
 
 That's it. You now have a private sync server for your whole life plan.
 
-### 5. Back it up
+### 5. Backup
 
-A private server means *you* are the backup department. Back up `/srv/webdav` (Ubuntu) or `/var/webdav` (OpenBSD) regularly with restic, borg, or a simple rsync to another drive. Because OmniFocus encrypts the database with your sync password, your backups are encrypted too.
+SSH into your server and run this any time you want:
+
+```bash
+omnifocus-backup
+```
+
+Snapshots are saved to `/var/backups/omnifocus/`.
 
 ## Bonus: moving from Things to OmniFocus
 

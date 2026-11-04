@@ -12,6 +12,7 @@ HTPASSWD=/etc/apache2/webdav.htpasswd
 CONF=/etc/apache2/omnifocus.conf
 MODS=/usr/local/lib/apache2
 HTTPD=/usr/local/sbin/httpd2
+BACKUP_CMD=/usr/local/bin/omnifocus-backup
 PORT=8080
 
 log() { print -r -- "==> $*"; }
@@ -71,6 +72,21 @@ chown root:www "$HTPASSWD"
 chmod 640 "$HTPASSWD"
 # print is a ksh builtin, so the password never appears in a process argument list
 print -r -- "$of_pass" | /usr/local/bin/htpasswd2 -i -B "$HTPASSWD" "$of_user" 2>/dev/null
+
+# Backup command
+log "Installing $BACKUP_CMD"
+cat >"$BACKUP_CMD" <<EOF
+#!/bin/sh
+# Snapshot the OmniFocus sync data to /var/backups/omnifocus.
+set -eu
+[ "\$(id -u)" -eq 0 ] || exec doas "\$0"
+umask 077
+mkdir -p /var/backups/omnifocus
+file=/var/backups/omnifocus/omnifocus-\$(date +%Y%m%d-%H%M%S).tar.gz
+tar -C $DATA_DIR -czf "\$file" omnifocus
+echo "\$file"
+EOF
+chmod 755 "$BACKUP_CMD"
 
 # Apache: localhost only
 log "Writing $CONF"
@@ -155,4 +171,6 @@ Done. In OmniFocus on each device:
   Server:   $url
   Username: $of_user
 On the first device choose to replace the server database.
+
+To back up, run omnifocus-backup on this host.
 EOF
